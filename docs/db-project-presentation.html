@@ -688,8 +688,8 @@
     }
 
     @media print {
-      /* Force 16:9 landscape page, zero margin */
-      @page { size: 13.333in 7.5in; margin: 0; }
+      /* Page == 1920×1080 CSS px at 96 DPI (same canvas as browser fullscreen) */
+      @page { size: 20in 11.25in; margin: 0; }
 
       /* Force dark theme regardless of current setting */
       html, html.theme-light, html.theme-dark {
@@ -731,8 +731,8 @@
       .slide {
         position: relative !important;
         inset: auto !important;
-        width: 13.333in !important;
-        height: 7.5in !important;
+        width: 20in !important;
+        height: 11.25in !important;
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
