@@ -6,6 +6,12 @@
 
 > 학습 목표 및 슬라이스 분할은 [docs/PRD.md](docs/PRD.md), 과제 안내는 [docs/ASSIGNMENT.md](docs/ASSIGNMENT.md) 참고.
 
+## 스크린샷
+
+| 목록 | 모임 만들기 | 통계 |
+|---|---|---|
+| ![목록](docs/images/main.png) | ![만들기](docs/images/create.png) | ![통계](docs/images/statistic.png) |
+
 ## 폴더 구조
 
 ```
