@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": "bash /Users/jayden/Developer/db-project/.claude/auto-commit-push.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash /Users/jayden/Developer/db-project/.claude/auto-resume.sh"
           }
         ]
       }

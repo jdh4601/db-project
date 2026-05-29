@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: db-project-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dbproject
+      POSTGRES_PASSWORD: dbproject
+      POSTGRES_DB: dbproject
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbproject_pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dbproject -d dbproject"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  dbproject_pgdata:
