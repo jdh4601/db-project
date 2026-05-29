@@ -805,7 +805,7 @@
     <div class="viz-menu-dropdown" id="vizMenuDropdown">
       <button onclick="cycleTheme()"><span id="themeIcon">🌙</span><span id="themeLabel">Dark</span></button>
       <button onclick="downloadImage()"><span>📥</span><span>Download PNG</span></button>
-      <button onclick="window.print()"><span>🖨️</span><span>Print / PDF</span></button>
+      <button onclick="printDeck()"><span>🖨️</span><span>Print / PDF</span></button>
     </div>
   </div>
 
@@ -1289,6 +1289,31 @@
     }, { passive: true });
 
     goToSlide(0);
+
+    // ===== Print: capture current viewport size and use as @page size =====
+    function printDeck() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var wIn = (w / 96).toFixed(4);
+      var hIn = (h / 96).toFixed(4);
+
+      var existing = document.getElementById('dynamicPrintStyle');
+      if (existing) existing.remove();
+
+      var style = document.createElement('style');
+      style.id = 'dynamicPrintStyle';
+      style.textContent =
+        '@media print {' +
+          '@page { size: ' + wIn + 'in ' + hIn + 'in; margin: 0; }' +
+          '.slide { width: ' + wIn + 'in !important; height: ' + hIn + 'in !important; }' +
+        '}';
+      document.head.appendChild(style);
+
+      var dropdown = document.getElementById('vizMenuDropdown');
+      if (dropdown) dropdown.classList.remove('open');
+
+      setTimeout(function() { window.print(); }, 80);
+    }
 
     // ===== Download PNG =====
     async function downloadImage() {
