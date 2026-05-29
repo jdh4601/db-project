@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/jayden/Developer/db-project/.claude/auto-commit-push.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
